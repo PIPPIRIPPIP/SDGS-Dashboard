@@ -4,8 +4,8 @@ require '../vendor/autoload.php'; // Pastikan path ini sesuai dengan lokasi auto
 use MongoDB\Client;
 
 function getTableData($indicator) {
-    $client = new Client("mongodb://localhost:27017"); // Ganti dengan koneksi MongoDB Anda
-    $collection = $client->bdnr->tes_uas; // Ganti dengan nama database dan koleksi Anda
+    $client = new Client("mongodb://localhost:27017");
+    $collection = $client->bdnr->tes_uas;
 
     $filter = ['Indicator' => $indicator];
     $options = [];
@@ -23,6 +23,9 @@ if (isset($_GET['indicator'])) {
     foreach ($response as $indicator) {
         $indicatorData[] = [
             '_id' => (string) $indicator['_id'],
+            'goal' => $indicator['Goal'],
+            'target' => $indicator['Target'],
+            'indicator' => $indicator['Indicator'],
             'description' => $indicator['SeriesDescription'],
             'value' => $indicator['Value'],
             'year' => $indicator['TimePeriod'],

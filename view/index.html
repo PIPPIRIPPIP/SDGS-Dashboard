@@ -19,7 +19,7 @@
   <body class="d-flex">
     <div id="sidebar" class="bg-dark text-white d-flex flex-column">
       <div id="logo">
-        <img src="../assets/logo.png" alt="Logo" />
+        <img src="logo.png" alt="Logo" />
         <span class="ms-3">SDGs Dashboard</span>
       </div>
       <ul class="nav flex-column">
@@ -29,17 +29,7 @@
             href="#"
             id="pict"
           >
-            <img src="../assets/3.png" alt="" />
-            <span class="ms-3">Kehidupan sehat & <br />Sejahtera</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a
-            class="nav-link text-white d-flex align-items-center p-3"
-            href="#"
-            id="pict"
-          >
-            <img src="../assets/4.png" alt="" />
+            <img src="4.png" alt="" />
             <span class="ms-3">Pendidikan Bermutu</span>
           </a>
         </li>
@@ -49,15 +39,22 @@
             href="#"
             id="pict"
           >
-            <img src="../assets/6.png" alt="" />
-            <span class="ms-3">Air bersih & <br />Sanitasi Layak</span>
+            <img src="3.png" alt="" />
+            <span class="ms-3">Kehidupan sehat & <br />Sejahtera</span>
           </a>
         </li>
         <li class="nav-item">
           <a
             class="nav-link text-white d-flex align-items-center p-3"
-            href="../view/dataset/dataset_3.html"
+            href="#"
+            id="pict"
           >
+            <img src="6.png" alt="" />
+            <span class="ms-3">Air bersih & <br />Sanitasi Layak</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white d-flex align-items-center p-3" href="#">
             <i class="fa fa-database"></i>
             <span class="ms-3">Database</span>
           </a>
@@ -77,6 +74,12 @@
         <h4 class="text-center fw-bold mt-4">Indikator</h4>
         <div class="card-body">
           <div class="indicators-container">
+            <button
+              class="scroll-btn scroll-left"
+              onclick="scrollIndicators('left')"
+            >
+              <i class="fas fa-chevron-left"></i>
+            </button>
             <div class="indicators">
               <div class="indicator">
                 <h5>1.1</h5>
@@ -148,11 +151,86 @@
                   <label for="indicator10"></label>
                 </div>
               </div>
+              <div class="indicator">
+                <h5>1.11</h5>
+                <div class="radio-group">
+                  <input type="radio" name="indicator" id="indicator11" />
+                  <label for="indicator10"></label>
+                </div>
+              </div>
+              <div class="indicator">
+                <h5>1.12</h5>
+                <div class="radio-group">
+                  <input type="radio" name="indicator" id="indicator12" />
+                  <label for="indicator10"></label>
+                </div>
+              </div>
+              <div class="indicator">
+                <h5>1.13</h5>
+                <div class="radio-group">
+                  <input type="radio" name="indicator" id="indicator13" />
+                  <label for="indicator10"></label>
+                </div>
+              </div>
+              <div class="indicator">
+                <h5>1.13</h5>
+                <div class="radio-group">
+                  <input type="radio" name="indicator" id="indicator13" />
+                  <label for="indicator10"></label>
+                </div>
+              </div>
+              <div class="indicator">
+                <h5>1.13</h5>
+                <div class="radio-group">
+                  <input type="radio" name="indicator" id="indicator13" />
+                  <label for="indicator10"></label>
+                </div>
+              </div>
+              <div class="indicator">
+                <h5>1.13</h5>
+                <div class="radio-group">
+                  <input type="radio" name="indicator" id="indicator13" />
+                  <label for="indicator10"></label>
+                </div>
+              </div>
+              <div class="indicator">
+                <h5>1.13</h5>
+                <div class="radio-group">
+                  <input type="radio" name="indicator" id="indicator13" />
+                  <label for="indicator10"></label>
+                </div>
+              </div>
+              <div class="indicator">
+                <h5>1.13</h5>
+                <div class="radio-group">
+                  <input type="radio" name="indicator" id="indicator13" />
+                  <label for="indicator10"></label>
+                </div>
+              </div>
+              <div class="indicator">
+                <h5>1.13</h5>
+                <div class="radio-group">
+                  <input type="radio" name="indicator" id="indicator13" />
+                  <label for="indicator10"></label>
+                </div>
+              </div>
+              <div class="indicator">
+                <h5>1.13</h5>
+                <div class="radio-group">
+                  <input type="radio" name="indicator" id="indicator13" />
+                  <label for="indicator10"></label>
+                </div>
+              </div>
             </div>
+            <button
+              class="scroll-btn scroll-right"
+              onclick="scrollIndicators('right')"
+            >
+              <i class="fas fa-chevron-right"></i>
+            </button>
           </div>
         </div>
       </div>
-      <!-- End of Indicators Section -->
 
       <div class="d-flex">
         <div class="chart-container flex-grow-1">
@@ -165,20 +243,67 @@
 
         <!-- Vertical Indicators Section -->
         <div class="vertical-indicators ms-4">
-          <div class="indicator">
-            <h5>2016</h5>
-            <h6>11.25</h6>
-            <h6>Persen</h6>
-          </div>
-          <div class="indicator">
-            <h5>2016</h5>
-            <h6>11.25</h6>
-            <h6>Persen</h6>
-          </div>
-          <div class="indicator">
-            <h5>2016</h5>
-            <h6>11.25</h6>
-            <h6>Persen</h6>
+          <div class="indicators-grid">
+            <div class="indicator">
+              <h5>2016</h5>
+              <h6>11.25</h6>
+              <h6>Persen</h6>
+            </div>
+            <div class="indicator">
+              <h5>2017</h5>
+              <h6>12.35</h6>
+              <h6>Persen</h6>
+            </div>
+            <div class="indicator">
+              <h5>2018</h5>
+              <h6>13.45</h6>
+              <h6>Persen</h6>
+            </div>
+            <div class="indicator">
+              <h5>2019</h5>
+              <h6>14.55</h6>
+              <h6>Persen</h6>
+            </div>
+            <div class="indicator">
+              <h5>2020</h5>
+              <h6>15.65</h6>
+              <h6>Persen</h6>
+            </div>
+            <div class="indicator">
+              <h5>2021</h5>
+              <h6>16.75</h6>
+              <h6>Persen</h6>
+            </div>
+            <div class="indicator">
+              <h5>2022</h5>
+              <h6>17.85</h6>
+              <h6>Persen</h6>
+            </div>
+            <div class="indicator">
+              <h5>2023</h5>
+              <h6>18.95</h6>
+              <h6>Persen</h6>
+            </div>
+            <div class="indicator">
+              <h5>2024</h5>
+              <h6>19.05</h6>
+              <h6>Persen</h6>
+            </div>
+            <div class="indicator">
+              <h5>2024</h5>
+              <h6>19.05</h6>
+              <h6>Persen</h6>
+            </div>
+            <div class="indicator">
+              <h5>2024</h5>
+              <h6>19.05</h6>
+              <h6>Persen</h6>
+            </div>
+            <div class="indicator">
+              <h5>2024</h5>
+              <h6>19.05</h6>
+              <h6>Persen</h6>
+            </div>
           </div>
         </div>
         <!-- End of Vertical Indicators Section -->
@@ -248,6 +373,25 @@
         });
       </script>
     </div>
+
+    <script>
+      function scrollIndicators(direction) {
+        const container = document.querySelector(".indicators");
+        const scrollAmount = container.offsetWidth;
+
+        if (direction === "left") {
+          container.scrollBy({
+            left: -scrollAmount,
+            behavior: "smooth",
+          });
+        } else {
+          container.scrollBy({
+            left: scrollAmount,
+            behavior: "smooth",
+          });
+        }
+      }
+    </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script>

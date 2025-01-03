@@ -1,5 +1,5 @@
 <?php
-require '../vendor/autoload.php'; // Pastikan path ini sesuai dengan lokasi autoload.php dari Composer
+require '../vendor/autoload.php';
 
 use MongoDB\Client;
 

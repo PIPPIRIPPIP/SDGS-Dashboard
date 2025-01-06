@@ -1,11 +1,11 @@
 <?php
-require '../vendor/autoload.php';
+require '../../vendor/autoload.php';
 
 use MongoDB\Client;
 
 function getTableData($indicator) {
     $client = new Client("mongodb://localhost:27017");
-    $collection = $client->bdnr->tes_uas;
+    $collection = $client->bdnr->goal_6;
 
     $filter = ['Indicator' => $indicator];
     $options = [];

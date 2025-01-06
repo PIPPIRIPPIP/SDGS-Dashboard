@@ -42,12 +42,17 @@
           <span class="ms-3">Air bersih & <br />Sanitasi Layak</span>
         </a>
       </li>
-        <li class="nav-item">
-          <a class="nav-link text-white d-flex align-items-center p-3" href="../dataset/dataset_3.html">
-            <i class="fa fa-database"></i>
-            <span class="ms-3">Database</span>
-          </a>
-        </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link text-white d-flex align-items-center p-3 dropdown-toggle" href="#" id="databaseDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <i class="fa fa-database"></i>
+          <span class="ms-3">Database</span>
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="databaseDropdown">
+          <li><a class="dropdown-item" href="../dataset/dataset_3.html">Dataset 3</a></li>
+          <li><a class="dropdown-item" href="../dataset/dataset_4.html">Dataset 4</a></li>
+          <li><a class="dropdown-item" href="../dataset/dataset_6.html">Dataset 6</a></li>
+        </ul>
+      </li>
       </ul>
     </div>
 
@@ -146,13 +151,6 @@
                 </div>
               </div>
               <div class="indicator me-1">
-                <h5>3.6.1</h5>
-                <div class="radio-group">
-                  <input type="radio" name="indicator" id="indicator12" value="3.6.1"/>
-                  <label for="indicator12"></label>
-                </div>
-              </div>
-              <div class="indicator me-1">
                 <h5>3.8.1</h5>
                 <div class="radio-group">
                   <input type="radio" name="indicator" id="indicator13" value="3.8.1"/>
@@ -210,28 +208,15 @@
       <!-- Chart Section -->
       <div class="d-flex mt-14">
         <div class="chart-container flex-grow-1">
-          <h6>
-            Tingkat penyelesaian pendidikan jenjang SD/sederajat, SMP/sederajat,
-            dan SMA/sederajat. <span class="increase">↑ 4% more in 2022</span>
-          </h6>
+          <h6 id="descChart">Indicator Description</h6>
           <canvas id="salesChart"></canvas>
         </div>
 
         <!-- Vertical Indicators Section -->
-        <div class="vertical-indicators ms-4">
+        <div class="vertical-indicators ms-4" id="verticalIndicators">
           <div class="indicator">
-            <h5>2016</h5>
-            <h6>11.25</h6>
-            <h6>Persen</h6>
-          </div>
-          <div class="indicator">
-            <h5>2016</h5>
-            <h6>11.25</h6>
-            <h6>Persen</h6>
-          </div>
-          <div class="indicator">
-            <h5>2016</h5>
-            <h6>11.25</h6>
+            <h5>Year</h5>
+            <h6>Value</h6>
             <h6>Persen</h6>
           </div>
         </div>
@@ -379,11 +364,17 @@
           });
 
           function fetchTableData(indicator) {
-            fetch(`../../data/getTableData.php?indicator=${indicator}`)
+            fetch(`../../data/tema3/getTableData.php?indicator=${indicator}`)
               .then((response) => response.json())
               .then((data) => {
                 indicatorDataArray = data;
+                document.getElementById("descChart").innerText = indicatorDataArray[0].description;
                 loadData(data);
+                // Update Chart
+                salesChart.data.labels = data.map(row => row.year);
+                salesChart.data.datasets[0].data = data.map(row => row.value);
+                salesChart.update();
+                verticalIndicators();
               })
               .catch((error) => {
                 console.error("Error fetching table data:", error);
@@ -440,6 +431,22 @@
           currentDeleteIndex = index;
         }
 
+        // Vertical Indicators Function
+        function verticalIndicators() {
+          const verticalIndicators = document.getElementById("verticalIndicators");
+          verticalIndicators.innerHTML = "";
+          indicatorDataArray.forEach((row) => {
+            const div = document.createElement("div");
+            div.classList.add("indicator");
+            div.innerHTML = `
+              <h5>${row.year}</h5>
+                <h6>${parseFloat(row.value).toFixed(2)}</h6>
+              <h6>Persen</h6>
+            `;
+            verticalIndicators.appendChild(div);
+          });
+        }
+
         document
           .getElementById("addDataForm")
           .addEventListener("submit", function (event) {
@@ -454,7 +461,7 @@
               source: document.getElementById("addSource").value,
             };
 
-            fetch("../../data/insertData.php", {
+            fetch("../../data/tema3/insertData.php", {
               method: "POST",
               headers: {
                 "Content-Type": "application/json",
@@ -498,7 +505,7 @@
               source: document.getElementById("editSource").value,
             };
 
-            fetch("../../data/updateData.php", {
+            fetch("../../data/tema3/updateData.php", {
               method: "POST",
               headers: {
                 "Content-Type": "application/json",
@@ -535,7 +542,7 @@
         document.getElementById("confirmDelete").onclick = function () {
           const dataToDelete = indicatorDataArray[currentDeleteIndex];
 
-          fetch("../../data/deleteData.php", {
+          fetch("../../data/tema3/deleteData.php", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -584,7 +591,7 @@
             ],
             datasets: [
               {
-                label: "Sales",
+                label: "Value",
                 data: [200, 300, 400, 500, 400, 300, 200, 300, 400],
                 borderColor: "rgba(0, 204, 255, 1)",
                 backgroundColor: "rgba(0, 204, 255, 0.2)",
@@ -631,9 +638,10 @@
       </script>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script>
       document
         .getElementById("toggleSidebar")

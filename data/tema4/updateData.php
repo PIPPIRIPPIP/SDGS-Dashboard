@@ -1,8 +1,8 @@
 <?php
-require '../vendor/autoload.php';
+require '../../vendor/autoload.php';
 
 $client = new MongoDB\Client("mongodb://localhost:27017");
-$collection = $client->bdnr->tes_uas;
+$collection = $client->bdnr->goal_4;
 
 
 $data = json_decode(file_get_contents('php://input'), true);

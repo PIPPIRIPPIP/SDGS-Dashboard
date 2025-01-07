@@ -7,7 +7,14 @@ function getTableData($indicator) {
     $client = new Client("mongodb://localhost:27017");
     $collection = $client->bdnr->goal_3;
 
-    $filter = ['Indicator' => $indicator];
+    if ($indicator == "3.2.1(a)"){
+        $filter = ['SeriesCode' => "SH_DYN_MORT"];
+    }else if ($indicator == "3.2.1(b)"){
+        $filter = ['SeriesCode' => "SH_DYN_IMRT"];
+    }else{
+        $filter = ['Indicator' => $indicator];
+    }
+
     $options = [];
 
     $data = $collection->find($filter, $options);

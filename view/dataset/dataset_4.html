@@ -20,29 +20,31 @@
   <body class="d-flex">
     <div id="sidebar" class="bg-dark text-white d-flex flex-column">
       <div id="logo">
-        <img src="../../assets/logo.png" alt="Logo" />
-        <span class="ms-3">SDGs Dashboard</span>
+        <a href="../landing.html" class="text-white nav-link">
+          <img src="../../assets/logo.png" alt="Logo" />
+        <span class="ms-3">SDGs Admin Dashboard</span>
+        </a>
       </div>
       <ul class="nav flex-column">
         <li class="nav-item">
-          <a class="nav-link text-white d-flex align-items-center p-3" href="../tema/tema_3.html" id="pict">
+          <a class="nav-link text-white d-flex align-items-center p-3" href="../dataset/dataset_3.html" id="pict">
             <img src="../../assets/3.png" alt="" />
             <span class="ms-3">Kehidupan sehat & <br />Sejahtera</span>
           </a>
         </li>
       <li class="nav-item">
-        <a class="nav-link text-white d-flex align-items-center p-3" href="../tema/tema_4.html" id="pict">
+        <a class="nav-link text-white d-flex align-items-center p-3" href="../dataset/dataset_4.html" id="pict">
           <img src="../../assets/4.jpg" alt="" />
           <span class="ms-3">Pendidikan Bermutu</span>
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link text-white d-flex align-items-center p-3" href="../tema/tema_6.html" id="pict">
+        <a class="nav-link text-white d-flex align-items-center p-3" href="../dataset/dataset_6.html" id="pict">
           <img src="../../assets/6.png" alt="" />
-          <span class="ms-3">Air bersih & <br />Sanitasi Layak</span>
+          <span class="ms-3">Air bersih & Sanitasi <br/>Layak</span>
         </a>
       </li>
-      <li class="nav-item dropdown">
+      <!-- <li class="nav-item dropdown">
         <a class="nav-link text-white d-flex align-items-center p-3 dropdown-toggle" href="#" id="databaseDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
           <i class="fa fa-database"></i>
           <span class="ms-3">Database</span>
@@ -52,21 +54,24 @@
           <li><a class="dropdown-item" href="../dataset/dataset_4.html">Dataset 4</a></li>
           <li><a class="dropdown-item" href="../dataset/dataset_6.html">Dataset 6</a></li>
         </ul>
-      </li>
+      </li> -->
       </ul>
     </div>
 
     <div id="content" class="flex-grow p-4">
-      <div class="d-flex align-items-center mb-4">
-        <button class="btn btn-dark me-3" id="toggleSidebar">
-          <i class="fas fa-bars"></i>
-        </button>
-        <h3 class="fw-bold">Database Good Health and Well-being</h3>
+      <div class="d-flex align-items-center justify-content-between mb-4">
+        <div class="d-flex align-items-center">
+          <button class="btn btn-dark me-3" id="toggleSidebar">
+            <i class="fas fa-bars"></i>
+          </button>
+          <h3 class="fw-bold">Database Good Health and Well-being</h3>
+        </div>
+        <a href="../tema/tema_4.html" class="btn btn-dark" id="authButton">Logout</a>
       </div>
 
       <!-- Indicators Section -->
       <div class="card">
-        <h4 class="text-center fw-bold mt-4">Indicator</h4>
+        <h4 class="text-center fw-bold mt-3">Indicator</h4>
         <div class="card-body">
           <div class="indicators-container" style="overflow-x: auto; white-space: nowrap">
             <!-- <button class="scroll-btn scroll-left" onclick="scrollIndicators('left')">
@@ -76,7 +81,7 @@
                 <div class="indicator me-1">
                     <h5>4.2.2</h5>
                     <div class="radio-group">
-                        <input type="radio" name="indicator" id="indicator2" value="4.2.2"/>
+                        <input type="radio" name="indicator" id="indicator2" value="4.2.2" checked/>
                         <label for="indicator2"></label>
                     </div>
                 </div>
@@ -289,6 +294,10 @@
             });
           });
 
+          // Fetch data for the default indicator (first indicator)
+          const defaultIndicator = radioButtons[0].value;
+          fetchTableData(defaultIndicator);
+
           function fetchTableData(indicator) {
             fetch(`../../data/tema4/getTableData.php?indicator=${indicator}`)
               .then((response) => response.json())
@@ -495,6 +504,21 @@
       </script>
 
       <script>
+        console.log(localStorage.getItem("email"));
+
+        document.getElementById('authButton').addEventListener('click', function(event) {
+          // Prevent the default action
+          event.preventDefault();
+          
+          // Remove the email from local storage
+          localStorage.removeItem('email');
+          
+          // Redirect to the login page or any other page
+          window.location.href = this.href;
+        });
+      </script>
+
+      <script>
         const ctx = document.getElementById("salesChart").getContext("2d");
         console.log(indicatorDataArray);
         const salesChart = new Chart(ctx, {
@@ -505,8 +529,8 @@
               {
                 label: "Value",
                 data: [200, 300, 400, 500, 400, 300, 200, 300, 400],
-                borderColor: "rgba(0, 204, 255, 1)",
-                backgroundColor: "rgba(0, 204, 255, 0.2)",
+                borderColor: "rgba(199, 33, 47, 1)",
+                backgroundColor: "rgba(199, 33, 47, 0.2)",
                 fill: true,
                 tension: 0.4, // Smooth the line
                 hoverBorderColor: "rgba(255, 99, 132, 1)", // Change border color on hover

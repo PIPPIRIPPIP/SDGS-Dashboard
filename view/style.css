@@ -1,6 +1,6 @@
 #sidebar {
   min-height: 100vh;
-  width: 250px;
+  width: 270px;
   transition: width 0.3s;
 }
 #sidebar.collapsed {
@@ -68,11 +68,6 @@ h2 {
   border-radius: 8px;
   padding: 10px;
   margin: 0 10px;
-  text-align: center;
-
-  background-color: #f8f9fa;
-  padding: 10px;
-  border-radius: 8px;
   text-align: center;
   min-width: 0;
   flex: 0 0 100px;
@@ -147,22 +142,29 @@ h2 {
   overflow-x: auto;
   scroll-behavior: smooth;
   padding: 10px;
+  /* padding-bottom: 20px; */
   white-space: nowrap;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
 .scroll-btn {
   position: absolute;
   z-index: 1;
   background: rgba(255, 255, 255, 0.9);
+  color: rgb(33, 37, 41);;
   border: none;
   padding: 10px;
   cursor: pointer;
+  border-radius: 100px;
 }
 
 .scroll-left {
   left: 0;
+  top: 20%;
 }
 
 .scroll-right {
   right: 0;
+  top: 20%;
 }

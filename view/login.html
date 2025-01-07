@@ -13,7 +13,7 @@
   <body class="d-flex justify-content-center align-items-center vh-100">
     <div class="card p-4" style="width: 20rem">
       <h3 class="card-title text-center">Login</h3>
-      <form action="index.html">
+      <form id="loginForm">
         <div class="mb-3">
           <label for="email" class="form-label">Email address</label>
           <input type="email" class="form-control" id="email" required />
@@ -23,7 +23,34 @@
           <input type="password" class="form-control" id="password" required />
         </div>
         <button type="submit" class="btn btn-dark w-100">Login</button>
+        <p id="errorMessage" class="text-danger mt-2" style="display: none;">
+          Email atau password salah!
+        </p>
       </form>
     </div>
+
+    <script>
+      const loginForm = document.getElementById('loginForm');
+      const errorMessage = document.getElementById('errorMessage');
+
+      const adminEmail = 'sdgsadmin@gmail.com';
+      const adminPassword = 'admin123';
+
+      loginForm.addEventListener('submit', (event) => {
+        event.preventDefault(); 
+
+        const email = document.getElementById('email').value.trim();
+        const password = document.getElementById('password').value.trim();
+
+        if (email === adminEmail && password === adminPassword) {
+          // Simpan email di localStorage
+          localStorage.setItem('email', email);
+
+          window.location.href = './dataset/dataset_3.html';
+        } else {
+          errorMessage.style.display = 'block';
+        }
+      });
+    </script>
   </body>
 </html>

@@ -68,10 +68,10 @@
       <div class="card">
         <h4 class="text-center fw-bold mt-4">Indicator</h4>
         <div class="card-body">
-          <div
-            class="indicators-container"
-            style="overflow-x: auto; white-space: nowrap"
-          >
+          <div class="indicators-container" style="overflow-x: auto; white-space: nowrap">
+            <button class="scroll-btn scroll-left" onclick="scrollIndicators('left')">
+              <i class="fas fa-chevron-left"></i>
+            </button>
             <div class="indicators d-inline-flex">
                 <div class="indicator me-1">
                     <h5>6.1.1</h5>
@@ -143,6 +143,9 @@
                         <label for="indicator6b1"></label>
                     </div>
                 </div>
+                <button class="scroll-btn scroll-right" onclick="scrollIndicators('right')">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
             </div>
           </div>
         </div>
@@ -158,10 +161,52 @@
 
         <!-- Vertical Indicators Section -->
         <div class="vertical-indicators ms-4" id="verticalIndicators">
-          <div class="indicator">
-            <h5>Year</h5>
-            <h6>Value</h6>
-            <h6>Persen</h6>
+          <div class="indicators-grid">
+            <div class="indicator">
+                <h5>Year</h5>
+                <h6>Value</h6>
+                <h6>Persen</h6>
+            </div>
+            <div class="indicator">
+                <h5>Year</h5>
+                <h6>Value</h6>
+                <h6>Persen</h6>
+            </div>
+            <div class="indicator">
+                <h5>Year</h5>
+                <h6>Value</h6>
+                <h6>Persen</h6>
+            </div>
+            <div class="indicator">
+                <h5>Year</h5>
+                <h6>Value</h6>
+                <h6>Persen</h6>
+            </div>
+            <div class="indicator">
+                <h5>Year</h5>
+                <h6>Value</h6>
+                <h6>Persen</h6>
+            </div>
+            <div class="indicator">
+                <h5>Year</h5>
+                <h6>Value</h6>
+                <h6>Persen</h6>
+            </div>
+            <div class="indicator">
+                <h5>Year</h5>
+                <h6>Value</h6>
+                <h6>Persen</h6>
+            </div>
+            <div class="indicator">
+                <h5>Year</h5>
+                <h6>Value</h6>
+                <h6>Persen</h6>
+            </div>
+            <div class="indicator">
+                <h5>Year</h5>
+                <h6>Value</h6>
+                <h6>Persen</h6>
+            </div>
           </div>
         </div>
         <!-- End of Vertical Indicators Section -->
@@ -378,16 +423,17 @@
         // Vertical Indicators Function
         function verticalIndicators() {
           const verticalIndicators = document.getElementById("verticalIndicators");
-          verticalIndicators.innerHTML = "";
+          verticalIndicators.innerHTML = '<div class="indicators-grid"></div>';
+          const indicatorsGrid = verticalIndicators.querySelector(".indicators-grid");
           indicatorDataArray.forEach((row) => {
             const div = document.createElement("div");
             div.classList.add("indicator");
             div.innerHTML = `
               <h5>${row.year}</h5>
-                <h6>${parseFloat(row.value).toFixed(2)}</h6>
+              <h6>${parseFloat(row.value).toFixed(2)}</h6>
               <h6>Persen</h6>
             `;
-            verticalIndicators.appendChild(div);
+            indicatorsGrid.appendChild(div);
           });
         }
 

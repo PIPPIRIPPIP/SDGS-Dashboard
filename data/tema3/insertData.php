@@ -30,8 +30,8 @@ header('Content-Type: application/json');
 
 // Response
 if ($result->getInsertedCount() === 1) {
-    echo json_encode(['success' => true, 'flight' => $insertData]);
+    echo json_encode(['success' => true, 'sdgs' => $insertData]);
 } else {
-    echo json_encode(['success' => false, 'error' => 'Failed to add flight.']);
+    echo json_encode(['success' => false, 'error' => 'Failed to add sdgs.']);
 }
 ?>

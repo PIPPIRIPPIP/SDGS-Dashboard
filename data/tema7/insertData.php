@@ -3,7 +3,7 @@ require '../../vendor/autoload.php';
 
 // Database connection
 $client = new MongoDB\Client("mongodb://localhost:27017");
-$collection = $client->bdnr->goal_3;
+$collection = $client->bdnr->goal_7;
 
 // Get input data
 $data = json_decode(file_get_contents('php://input'), true);

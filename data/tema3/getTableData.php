@@ -37,6 +37,7 @@ if (isset($_GET['indicator'])) {
             'value' => $indicator['Value'],
             'year' => $indicator['TimePeriod'],
             'source' => $indicator['Source'],
+            'unit' => $indicator['[Units]'],
         ];
     }
 

@@ -5,7 +5,7 @@ use MongoDB\Client;
 
 function getTableData($indicator) {
     $client = new Client("mongodb://localhost:27017");
-    $collection = $client->bdnr->goal_6;
+    $collection = $client->bdnr->goal_7;
 
     $filter = ['Indicator' => $indicator];
     $options = [];

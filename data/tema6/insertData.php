@@ -21,6 +21,7 @@ $insertData = [
     'Value' => $data['value'],
     'Time_Detail' => "",
     'Source' => $data['source'],
+    '[Units]' => $data['unit'],
 ];
 
 // Insert data into MongoDB

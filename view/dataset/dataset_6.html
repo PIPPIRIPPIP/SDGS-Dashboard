@@ -20,7 +20,7 @@
   <body class="d-flex" style="background-color: rgba(38, 189, 226, 0.2);">
     <div id="sidebar" class="bg-dark text-white d-flex flex-column">
       <div id="logo">
-        <a href="../landing.html" class="text-white nav-link">
+        <a href="../index.html" class="text-white nav-link">
           <img src="../../assets/logo.png" alt="Logo" />
           <span class="ms-3">SDGs Admin Dashboard</span>
         </a>
@@ -33,7 +33,7 @@
             id="pict"
           >
             <img src="../../assets/3.png" alt="" />
-            <span class="ms-3">Kehidupan sehat & <br />Sejahtera</span>
+            <span class="ms-3">Good Health and </br>Well-Being</span>
           </a>
         </li>
         <li class="nav-item">
@@ -42,8 +42,8 @@
             href="../dataset/dataset_4.html"
             id="pict"
           >
-            <img src="../../assets/4.jpg" alt="" />
-            <span class="ms-3">Pendidikan Bermutu</span>
+            <img src="../../assets/4.png" alt="" />
+            <span class="ms-3">Quality Education</span>
           </a>
         </li>
         <li class="nav-item">
@@ -53,7 +53,17 @@
             id="pict"
           >
             <img src="../../assets/6.png" alt="" />
-            <span class="ms-3">Air bersih & Sanitasi <br/>Layak</span>
+            <span class="ms-3">Clean Water And </br>Sanitation</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link text-white d-flex align-items-center p-3"
+            href="../dataset/dataset_7.html"
+            id="pict"
+          >
+            <img src="../../assets/7.png" alt="" />
+            <span class="ms-3">Affordable and Clean </br>Energy</span>
           </a>
         </li>
         <!-- <li class="nav-item dropdown">
@@ -123,7 +133,7 @@
                   <label for="indicator621"></label>
                 </div>
               </div>
-              <div class="indicator me-1">
+              <!-- <div class="indicator me-1">
                 <h5>6.3.2</h5>
                 <div class="radio-group">
                   <input
@@ -134,7 +144,7 @@
                   />
                   <label for="indicator632"></label>
                 </div>
-              </div>
+              </div> -->
               <div class="indicator me-1">
                 <h5>6.4.1</h5>
                 <div class="radio-group">
@@ -238,18 +248,27 @@
           <canvas id="salesChart"></canvas>
         </div>
 
-        <!-- Vertical Indicators Section -->
-        <div class="vertical-indicators ms-4" id="verticalIndicators">
-          <div class="indicators-grid">
-            <div class="indicator">
-              <h5>Year</h5>
-              <h6>Value</h6>
-              <h6>Persen</h6>
+        <!-- tambahkan card baru diatas vertical indicator ini, untuk di isi dengan sebuah teks. Namun tetap sejajar dengan chart -->
+        <div class="container-vertical">
+          <div class="card ms-4">
+            <div class="card-body text-center">
+              <h6 class="card-title">Detail Value</h6>
+              <span>Unit: </span><span class="card-text" id="unitValue">This is a new</span>
             </div>
           </div>
-        </div>
+          <!-- Vertical Indicators Section -->
+          <div class="vertical-indicators ms-4" id="verticalIndicators">
+            <div class="indicators-grid">
+              <div class="indicator">
+                <h5>Year</h5>
+                <h6>Value</h6>
+                <h6>Persen</h6>
+              </div>
+            </div>
+          </div>
         <!-- End of Vertical Indicators Section -->
       </div>
+    </div>
       <!-- End of Chart Section -->
 
       <!-- Tabel Data -->
@@ -280,6 +299,7 @@
             <!-- Data will go here -->
           </tbody>
         </table>
+        <h6>Sumber Data: https://unstats.un.org/sdgs/dataportal</h6>
         <!-- End of Tabel Data -->
 
         <!-- Add SDGs Modal -->
@@ -367,6 +387,15 @@
                       id="addSource"
                       required
                     ></textarea>
+                  </div>
+                  <div class="form-group">
+                    <label for="addUnit">Unit</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="addUnit"
+                      required
+                    />
                   </div>
                   <button type="submit" class="btn btn-primary">
                     Add New Data
@@ -559,6 +588,7 @@
           document.getElementById("addGoal").value = data.goal;
           document.getElementById("addTarget").value = data.target;
           document.getElementById("addIndicator").value = data.indicator;
+          document.getElementById("editUnit").value = data.unit;
         }
 
         // Edit Function
@@ -578,18 +608,18 @@
 
         // Vertical Indicators Function
         function verticalIndicators() {
-          const verticalIndicators =
-            document.getElementById("verticalIndicators");
+          const verticalIndicators = document.getElementById("verticalIndicators");
           verticalIndicators.innerHTML = '<div class="indicators-grid"></div>';
-          const indicatorsGrid =
-            verticalIndicators.querySelector(".indicators-grid");
+          const indicatorsGrid = verticalIndicators.querySelector(".indicators-grid");
+          const unitValueElement = document.getElementById('unitValue');
+          unitValueElement.textContent = indicatorDataArray[0].unit;
+          console.log("unit:", indicatorDataArray[0].unit);
           indicatorDataArray.forEach((row) => {
             const div = document.createElement("div");
             div.classList.add("indicator");
             div.innerHTML = `
-              <h5>${row.year}</h5>
+              <h5 class="year">${row.year}</h5>
               <h6>${parseFloat(row.value).toFixed(2)}</h6>
-              <h6>Persen</h6>
             `;
             indicatorsGrid.appendChild(div);
           });
@@ -607,6 +637,7 @@
               description: document.getElementById("addDescription").value,
               value: document.getElementById("addValue").value,
               source: document.getElementById("addSource").value,
+              unit: document.getElementById("addUnit").value
             };
 
             fetch("../../data/tema6/insertData.php", {
@@ -650,6 +681,7 @@
               description: document.getElementById("editDescription").value,
               value: document.getElementById("editValue").value,
               source: document.getElementById("editSource").value,
+              unit: indicatorDataArray[currentEditIndex].unit,
             };
 
             fetch("../../data/tema6/updateData.php", {
@@ -819,7 +851,6 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script>
       document
         .getElementById("toggleSidebar")

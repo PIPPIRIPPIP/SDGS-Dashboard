@@ -16,7 +16,7 @@
 
     <title>Bootstrap Sidebar</title>
   </head>
-  <body class="d-flex" style="background-color: rgba(199, 33, 47, 0.2);">
+  <body class="d-flex" style="background-color: rgba(226, 170, 38, 0.2);">
     <div id="sidebar" class="bg-dark text-white d-flex flex-column">
       <div id="logo">
         <a href="../index.html" class="text-white nav-link">
@@ -79,7 +79,7 @@
           <button class="btn btn-dark me-3" id="toggleSidebar">
             <i class="fas fa-bars"></i>
           </button>
-          <h3 class="fw-bold">Statistic Quality Education</h3>
+          <h3 class="fw-bold">Statistic Affordable and Clean Energy</h3>
         </div>
         <a href="../login.html" class="btn btn-dark" id="authButton">Login</a>
       </div>
@@ -92,98 +92,80 @@
             class="indicators-container"
             style="overflow-x: auto; white-space: nowrap"
           >
-            <!-- <button class="scroll-btn scroll-left" onclick="scrollIndicators('left')">
-                <i class="fas fa-chevron-left"></i>
+            <!-- <button
+              class="scroll-btn scroll-left"
+              onclick="scrollIndicators('left')"
+            >
+              <i class="fas fa-chevron-left"></i>
             </button> -->
             <div class="indicators d-inline-flex">
               <div class="indicator me-1">
-                <h5>4.2.2</h5>
+                <h5>7.1.1</h5>
                 <div class="radio-group">
                   <input
                     type="radio"
                     name="indicator"
-                    id="indicator2"
-                    value="4.2.2"
+                    id="indicator611"
+                    value="7.1.1"
                     checked
                   />
-                  <label for="indicator2"></label>
+                  <label for="indicator711"></label>
                 </div>
               </div>
               <div class="indicator me-1">
-                <h5>4.5.1</h5>
+                <h5>7.1.2</h5>
                 <div class="radio-group">
                   <input
                     type="radio"
                     name="indicator"
-                    id="indicator3"
-                    value="4.5.1"
+                    id="indicator621"
+                    value="7.1.2"
                   />
-                  <label for="indicator3"></label>
+                  <label for="indicator712"></label>
                 </div>
               </div>
               <div class="indicator me-1">
-                <h5>4.a.1(1)</h5>
+                <h5>7.2.1</h5>
                 <div class="radio-group">
                   <input
                     type="radio"
                     name="indicator"
-                    id="indicator4"
-                    value="4.a.1(1)"
+                    id="indicator641"
+                    value="7.2.1"
                   />
-                  <label for="indicator4"></label>
+                  <label for="indicator721"></label>
                 </div>
               </div>
               <div class="indicator me-1">
-                <h5>4.a.1(2)</h5>
+                <h5>7.3.1</h5>
                 <div class="radio-group">
                   <input
                     type="radio"
                     name="indicator"
-                    id="indicator5"
-                    value="4.a.1(2)"
+                    id="indicator642"
+                    value="7.3.1"
                   />
-                  <label for="indicator5"></label>
+                  <label for="indicator731"></label>
                 </div>
               </div>
               <div class="indicator me-1">
-                <h5>4.a.1(3)</h5>
+                <h5>7.a.1</h5>
                 <div class="radio-group">
                   <input
                     type="radio"
                     name="indicator"
-                    id="indicator6"
-                    value="4.a.1(3)"
+                    id="indicator651"
+                    value="7.a.1"
                   />
-                  <label for="indicator6"></label>
+                  <label for="indicator7a1"></label>
                 </div>
               </div>
-              <div class="indicator me-1">
-                <h5>4.a.1(4)</h5>
-                <div class="radio-group">
-                  <input
-                    type="radio"
-                    name="indicator"
-                    id="indicator7"
-                    value="4.a.1(4)"
-                  />
-                  <label for="indicator7"></label>
-                </div>
-              </div>
-              <div class="indicator me-1">
-                <h5>4.b.1</h5>
-                <div class="radio-group">
-                  <input
-                    type="radio"
-                    name="indicator"
-                    id="indicator8"
-                    value="4.b.1"
-                  />
-                  <label for="indicator8"></label>
-                </div>
-              </div>
-              <!-- <button class="scroll-btn scroll-right" onclick="scrollIndicators('right')">
-                    <i class="fas fa-chevron-right"></i>
-                </button> -->
+              <!-- <button
+                class="scroll-btn scroll-right"
+                onclick="scrollIndicators('right')"
+              >
+                <i class="fas fa-chevron-right"></i>
+              </button> -->
             </div>
           </div>
         </div>
@@ -238,7 +220,7 @@
           fetchTableData(defaultIndicator);
 
           function fetchTableData(indicator) {
-            fetch(`../../data/tema4/getTableData.php?indicator=${indicator}`)
+            fetch(`../../data/tema7/getTableData.php?indicator=${indicator}`)
               .then((response) => response.json())
               .then((data) => {
                 indicatorDataArray = data;
@@ -296,8 +278,8 @@
               {
                 label: "Year",
                 data: [200, 300, 400, 500, 400, 300, 200, 300, 400],
-                borderColor: "rgba(199, 33, 47, 1)",
-                backgroundColor: "rgba(199, 33, 47, 0.2)",
+                borderColor: "rgba(226, 170, 38, 1)",
+                backgroundColor: "rgba(226, 170, 38, 0.2)",
                 fill: true,
                 tension: 0.4, // Smooth the line
                 hoverBorderColor: "rgba(255, 99, 132, 1)", // Change border color on hover
@@ -317,7 +299,7 @@
               x: {
                 title: {
                   display: true,
-                  text: "Year",
+                  text: "",
                 },
               },
             },

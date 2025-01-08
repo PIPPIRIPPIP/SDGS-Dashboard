@@ -82,6 +82,8 @@ h2 {
 }
 .card {
   margin-top: 10px;
+  margin-bottom: 1rem;
+  padding-bottom: 10px;
 }
 
 .card-body {
@@ -101,9 +103,13 @@ h2 {
   margin: 10px 0;
   text-align: center;
 }
+.container-vertical {
+  display: flex;
+  flex-direction: column; 
+}
 
 .vertical-indicators {
-  max-height: 400px;
+  max-height: 240px;
   overflow-y: auto;
   overflow-x: hidden;
   width: 350px;
@@ -175,4 +181,8 @@ h2 {
 .scroll-right {
   right: 0;
   top: 20%;
+}
+
+.year {
+  text-decoration: underline;
 }

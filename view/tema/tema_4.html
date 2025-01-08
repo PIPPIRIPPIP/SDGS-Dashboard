@@ -16,10 +16,10 @@
 
     <title>Bootstrap Sidebar</title>
   </head>
-  <body class="d-flex" style="background-color: rgba(199, 33, 47, 0.2);">
+  <body class="d-flex" style="background-color: rgba(199, 33, 47, 0.2)">
     <div id="sidebar" class="bg-dark text-white d-flex flex-column">
       <div id="logo">
-        <a href="../landing.html" class="text-white nav-link">
+        <a href="../index.html" class="text-white nav-link">
           <img src="../../assets/logo.png" alt="Logo" />
           <span class="ms-3">SDGs Dashboard</span>
         </a>
@@ -52,7 +52,7 @@
             id="pict"
           >
             <img src="../../assets/6.png" alt="" />
-            <span class="ms-3">Air bersih & Sanitasi <br/>Layak</span>
+            <span class="ms-3">Air bersih & Sanitasi <br />Layak</span>
           </a>
         </li>
         <!-- <li class="nav-item">
@@ -249,7 +249,7 @@
             div.innerHTML = `
               <h5>${row.year}</h5>
               <h6>${parseFloat(row.value).toFixed(2)}</h6>
-              <h6>Persen</h6>
+              <h6>${row.unit}</h6>
             `;
             indicatorsGrid.appendChild(div);
           });

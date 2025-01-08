@@ -3,8 +3,9 @@ require '../../vendor/autoload.php';
 
 use MongoDB\Client;
 
-function getTableData($indicator) {
-    $client = new Client("mongodb://localhost:27017");
+function getTableData($indicator)
+{
+    $client = new Client('mongodb://localhost:27017');
     $collection = $client->bdnr->goal_4;
 
     $filter = ['Indicator' => $indicator];
@@ -30,6 +31,7 @@ if (isset($_GET['indicator'])) {
             'value' => $indicator['Value'],
             'year' => $indicator['TimePeriod'],
             'source' => $indicator['Source'],
+            'unit' => $indicator['[Units]'],
         ];
     }
 

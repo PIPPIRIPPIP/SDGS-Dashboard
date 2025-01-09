@@ -95,7 +95,7 @@
 
       <!-- Indicators Section -->
       <div class="card mb-2">
-        <h4 class="text-center fw-bold mt-3">Indicator</h4>
+        <h4 class="text-center fw-bold mt-3" id="indicatorTitle">Indicator</h4>
         <div class="card-body">
           <div
             class="indicators-container"
@@ -475,6 +475,7 @@
           // Fetch data for the default indicator (first indicator)
           const defaultIndicator = radioButtons[0].value;
           fetchTableData(defaultIndicator);
+          fetchIndicatorTitle();
 
           function fetchTableData(indicator) {
             fetch(`../../data/tema7/getTableData.php?indicator=${indicator}`)
@@ -492,6 +493,17 @@
               })
               .catch((error) => {
                 console.error("Error fetching table data:", error);
+              });
+          }
+
+          function fetchIndicatorTitle() {
+            fetch(`../../data/tema7/sumIndicator.php`)
+              .then((response) => response.json())
+              .then((data) => {
+                document.getElementById("indicatorTitle").innerText = `Indicator (${data.jumlah})`;
+              })
+              .catch((error) => {
+                console.error("Error fetching indicator title:", error);
               });
           }
         });

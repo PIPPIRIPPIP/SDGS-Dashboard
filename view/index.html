@@ -37,6 +37,7 @@
     <section class="container" id="mainContent">
       <div class="text">
         <h2>The 17 Sustainable Development Goals</h2>
+        <p class="goals-info text-center">There are <span id="totalGoals"></span> Goals and <span id="totalIndicators"></span> Indicators</p>
       </div>
       <div class="rowitems">
         <div class="container-box">
@@ -70,7 +71,7 @@
                 alt="Clean Water And Sanitation"
               />
               <h4>Clean Water And Sanitation</h4>
-              <p>10 Indicator</p>
+              <p>9 Indicator</p>
             </a>
           </div>
         </div>
@@ -84,165 +85,20 @@
             </a>
           </div>
         </div>
-
-        <!-- <div class="container-box">
-          <div class="container-image">
-            <a href="/view/tema/tema_3.html">
-              <img
-                src="../assets/4.png"
-                alt="Good Health and Well-Being"
-              />
-              <h4>Good Health and Well-Being</h4>
-              <p>7 Indicator</p>
-            </a>
-          </div>
-        </div>
-
-        <div class="container-box">
-          <div class="container-image">
-            <a href="/view/tema/tema_3.html">
-              <img
-                src="../assets/6.png"
-                alt="Clean Water And Sanitation"
-              />
-              <h4>Clean Water And Sanitation</h4>
-              <p>9 Indicator</p>
-            </a>
-          </div>
-        </div>
-
-        <div class="container-box">
-          <div class="container-image">
-            <a href="/view/tema/tema_3.html">
-              <img src="../assets/" alt="Quality Education" />
-              <h4>Quality Education</h4>
-              <p>5 Indicator</p>
-            </a>
-          </div>
-        </div>
-
-        <div class="container-box">
-          <div class="container-image">
-            <a href="/view/tema/tema_3.html">
-              <img
-                src="../assets/4.png"
-                alt="Good Health and Well-Being"
-              />
-              <h4>Good Health and Well-Being</h4>
-              <p>7 Indicator</p>
-            </a>
-          </div>
-        </div>
-
-        <div class="container-box">
-          <div class="container-image">
-            <a href="/view/tema/tema_3.html">
-              <img
-                src="../assets/6.png"
-                alt="Clean Water And Sanitation"
-              />
-              <h4>Clean Water And Sanitation</h4>
-              <p>9 Indicator</p>
-            </a>
-          </div>
-        </div>
-
-        <div class="container-box">
-          <div class="container-image">
-            <a href="/view/tema/tema_3.html">
-              <img src="../assets/" alt="Quality Education" />
-              <h4>Quality Education</h4>
-              <p>5 Indicator</p>
-            </a>
-          </div>
-        </div>
-
-        <div class="container-box">
-          <div class="container-image">
-            <a href="/view/tema/tema_3.html">
-              <img
-                src="../assets/4.png"
-                alt="Good Health and Well-Being"
-              />
-              <h4>Good Health and Well-Being</h4>
-              <p>7 Indicator</p>
-            </a>
-          </div>
-        </div>
-
-        <div class="container-box">
-          <div class="container-image">
-            <a href="/view/tema/tema_3.html">
-              <img
-                src="../assets/6.png"
-                alt="Clean Water And Sanitation"
-              />
-              <h4>Clean Water And Sanitation</h4>
-              <p>9 Indicator</p>
-            </a>
-          </div>
-        </div>
-
-        <div class="container-box">
-          <div class="container-image">
-            <a href="/view/tema/tema_3.html">
-              <img src="../assets/" alt="Quality Education" />
-              <h4>Quality Education</h4>
-              <p>5 Indicator</p>
-            </a>
-          </div>
-        </div>
-
-        <div class="container-box">
-          <div class="container-image">
-            <a href="/view/tema/tema_3.html">
-              <img
-                src="../assets/4.png"
-                alt="Good Health and Well-Being"
-              />
-              <h4>Good Health and Well-Being</h4>
-              <p>7 Indicator</p>
-            </a>
-          </div>
-        </div>
-
-        <div class="container-box">
-          <div class="container-image">
-            <a href="/view/tema/tema_3.html">
-              <img
-                src="../assets/6.png"
-                alt="Clean Water And Sanitation"
-              />
-              <h4>Clean Water And Sanitation</h4>
-              <p>9 Indicator</p>
-            </a>
-          </div>
-        </div>
-
-        <div class="container-box">
-          <div class="container-image">
-            <a href="/view/tema/tema_3.html">
-              <img src="../assets/" alt="Quality Education" />
-              <h4>Quality Education</h4>
-              <p>5 Indicator</p>
-            </a>
-          </div>
-        </div>
-
-        <div class="container-box">
-          <div class="container-image">
-            <a href="/view/tema/tema_3.html">
-              <img
-                src="../assets/4.png"
-                alt="Good Health and Well-Being"
-              />
-              <h4>Good Health and Well-Being</h4>
-              <p>7 Indicator</p>
-            </a>
-          </div>
-        </div> -->
       </div>
     </section>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+          fetch('../data/joinedData.php')
+              .then(response => response.json())
+              .then(data => {
+                  document.getElementById('totalGoals').innerText = data.totalGoals;
+                  document.getElementById('totalIndicators').innerText = data.totalIndicators;
+              })
+              .catch(error => console.error('Error fetching join data:', error));
+      });
+    </script>
 
     <script>
       const email = localStorage.getItem("email");

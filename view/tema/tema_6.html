@@ -86,7 +86,7 @@
 
       <!-- Indicators Section -->
       <div class="card mb-2">
-        <h4 class="text-center fw-bold mt-3">Indicator</h4>
+        <h4 class="text-center fw-bold mt-3" id="indicatorTitle">Indicator</h4>
         <div class="card-body">
           <div
             class="indicators-container"
@@ -124,18 +124,6 @@
                   <label for="indicator621"></label>
                 </div>
               </div>
-              <!-- <div class="indicator me-1">
-                <h5>6.3.2</h5>
-                <div class="radio-group">
-                  <input
-                    type="radio"
-                    name="indicator"
-                    id="indicator632"
-                    value="6.3.2"
-                  />
-                  <label for="indicator632"></label>
-                </div>
-              </div> -->
               <div class="indicator me-1">
                 <h5>6.4.1</h5>
                 <div class="radio-group">
@@ -278,6 +266,7 @@
           // Fetch data for the default indicator (first indicator)
           const defaultIndicator = radioButtons[0].value;
           fetchTableData(defaultIndicator);
+          fetchIndicatorTitle();
 
           function fetchTableData(indicator) {
             fetch(`../../data/tema6/getTableData.php?indicator=${indicator}`)
@@ -294,6 +283,17 @@
               })
               .catch((error) => {
                 console.error("Error fetching table data:", error);
+              });
+          }
+
+          function fetchIndicatorTitle() {
+            fetch(`../../data/tema6/sumIndicator.php`)
+              .then((response) => response.json())
+              .then((data) => {
+                document.getElementById("indicatorTitle").innerText = `Indicator (${data.jumlah})`;
+              })
+              .catch((error) => {
+                console.error("Error fetching indicator title:", error);
               });
           }
         });

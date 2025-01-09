@@ -17,7 +17,7 @@
     <title>Bootstrap Sidebar</title>
   </head>
 
-  <body class="d-flex" style="background-color: rgba(76, 159, 56, 0.2);">
+  <body class="d-flex" style="background-color: rgba(76, 159, 56, 0.2)">
     <div id="sidebar" class="bg-dark text-white d-flex flex-column">
       <div id="logo">
         <a href="../index.html" class="text-white nav-link">
@@ -598,7 +598,7 @@
             </div>
           </div>
         </div>
-      <!-- </div> -->
+      </div>
 
       <script>
         let indicatorDataArray = [];
@@ -848,16 +848,18 @@
       <script>
         console.log(localStorage.getItem("email"));
 
-        document.getElementById('authButton').addEventListener('click', function(event) {
-          // Prevent the default action
-          event.preventDefault();
-          
-          // Remove the email from local storage
-          localStorage.removeItem('email');
-          
-          // Redirect to the login page or any other page
-          window.location.href = this.href;
-        });
+        document
+          .getElementById("authButton")
+          .addEventListener("click", function (event) {
+            // Prevent the default action
+            event.preventDefault();
+
+            // Remove the email from local storage
+            localStorage.removeItem("email");
+
+            // Redirect to the login page or any other page
+            window.location.href = this.href;
+          });
       </script>
 
       

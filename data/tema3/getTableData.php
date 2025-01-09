@@ -3,15 +3,16 @@ require '../../vendor/autoload.php';
 
 use MongoDB\Client;
 
-function getTableData($indicator) {
-    $client = new Client("mongodb://localhost:27017");
+function getTableData($indicator)
+{
+    $client = new Client('mongodb://localhost:27017');
     $collection = $client->bdnr->goal_3;
 
-    if ($indicator == "3.2.1(a)"){
-        $filter = ['SeriesCode' => "SH_DYN_MORT"];
-    }else if ($indicator == "3.2.1(b)"){
-        $filter = ['SeriesCode' => "SH_DYN_IMRT"];
-    }else{
+    if ($indicator == '3.2.1(a)') {
+        $filter = ['SeriesCode' => 'SH_DYN_MORT'];
+    } else if ($indicator == '3.2.1(b)') {
+        $filter = ['SeriesCode' => 'SH_DYN_IMRT'];
+    } else {
         $filter = ['Indicator' => $indicator];
     }
 
